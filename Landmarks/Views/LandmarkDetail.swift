@@ -11,7 +11,7 @@ struct LandmarkDetail: View {
     var landmark: Landmark
     
     var body: some View {
-        VStack {
+        ScrollView {
             MapView(coordinate: landmark.locationCoordinate)
                 .frame(height: 300)
             
@@ -34,14 +34,15 @@ struct LandmarkDetail: View {
                 Divider()
                 
                 Text("About \(landmark.name)")
-                                    .font(.title2)
+                    .font(.title2)
                 Text(landmark.description)
-            }
+            }.padding()
         }
-        .padding()
+        .navigationTitle(landmark.name)
+        .navigationBarTitleDisplayMode(.inline)
         
-        Spacer()
     }
+    
 }
 
 #Preview {
